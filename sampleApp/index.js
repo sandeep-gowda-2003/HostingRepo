@@ -4,7 +4,7 @@ import express from "express";
 import { Server } from "socket.io";
 import http from "node:http";
 import env from "dotenv";
-
+import ejs from "ejs";
 env.config();
 
 // socketio runs on the http server in we use app.listen then express hides the server
@@ -12,6 +12,7 @@ env.config();
 let app = express();
 let server = http.createServer(app);
 let io = new Server(server);
+app.set("view engine", ejs);
 
 app.get("/", (req, res) => {
   res.render("index.ejs");
