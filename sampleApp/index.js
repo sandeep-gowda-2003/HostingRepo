@@ -1,4 +1,4 @@
-// import hello from "./src/controllers/sam1.js";
+import hello from "./src/controllers/sam1.js";
 // import conn from "./src/data/db";
 import express from "express";
 import env from "dotenv";
@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
   res.send("<h1> HELLO BUDDY I HOPE YOU ARE FINE </h1>");
 });
 app.get("/next", async (req, res) => {
-  //   res.send(hello());
+  res.send(hello());
   //   res.json(await (await db).collection("usercredentials").find());
 });
 
