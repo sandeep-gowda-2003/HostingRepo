@@ -1,9 +1,11 @@
 // https://socket.io/docs/v4/tutorial/api-overview
 
 import express from "express";
-import path from "path";
 import { Server } from "socket.io";
 import http from "node:http";
+import env from "dotenv";
+
+env.config();
 
 // socketio runs on the http server in we use app.listen then express hides the server
 
@@ -12,10 +14,7 @@ let server = http.createServer(app);
 let io = new Server(server);
 
 app.get("/", (req, res) => {
-  let options = {
-    root: path.join(process.cwd()),
-  };
-  res.sendFile("views/index.html", options);
+  res.render("index.ejs");
 });
 
 // this is triggered whenever there is a connection
