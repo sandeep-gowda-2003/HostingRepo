@@ -1,5 +1,5 @@
 import express from "express";
-import session, { Cookie } from "express-session";
+import session from "express-session";
 import bodyParser from "body-parser";
 import { Server } from "socket.io";
 import http from "node:http";
