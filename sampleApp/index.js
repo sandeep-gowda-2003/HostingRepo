@@ -13,8 +13,13 @@ app.get("/next", async (req, res) => {
   //   res.send(hello());
   try {
     let result = await (await db).collection("usercredentials").find();
+    console.log(result);
 
-    res.json(JSON.stringify(result));
+    if (result) {
+      res.json(True);
+    } else {
+      res.send("False");
+    }
   } catch (error) {
     res.send("error occured", error.message);
   }
