@@ -37,4 +37,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(8000, () => console.log("http://localhost:" + 8000 + "/"));
+server.listen(process.env.PORT, () => console.log("http://localhost:" + "/"));
