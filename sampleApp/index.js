@@ -1,4 +1,4 @@
-import hello from "./src/controllers/sam1";
+import hello from "./src/controllers/sam1.js";
 // import conn from "./src/data/db";
 import express from "express";
 // import env from "dotenv";
