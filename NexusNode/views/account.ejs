@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="account.css">
+</head>
+
+<body>
+    <% if(locals.message) {%>
+        <h3>
+            <%= message %>
+        </h3>
+        <% } %>
+            <div class="container">
+                <div class="head">
+                    <div class="back" onclick="location.href='/'"><i style="font-size: 3rem;"
+                            class="fa-solid fa-arrow-left"></i>
+                    </div>
+                    <div class="userimage">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+                <div class="username">
+                    <%= username %>
+                </div>
+                <div class="functionalities-container">
+                    <!-- <div class="cards">Profile pic</div> -->
+                    <div class="cards pass-card">Change Password</div>
+                </div>
+            </div>
+            <div class="password">
+                <div class="head">
+                    <div class="back" onclick="showContainer()"><i style="font-size: 3rem;"
+                            class="fa-solid fa-arrow-left"></i>
+                    </div>
+                    <h2>Change Password</h2>
+                </div>
+                <div class="functionalities">
+                    <form action="/changePassword" method="post">
+                        <input type="text" name="currentPassword" placeholder="Enter your currentPassword" id="current"
+                            required>
+                        <input type="text" name="newPassword" placeholder="Enter your new password" id="new" required>
+                        <input type="text" name="confirmPassword" placeholder="Confirm your password" id="confirm"
+                            required>
+                        <button type="submit">submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <script>
+                document.querySelector('form').addEventListener('submit', passwordMatch)
+                function passwordMatch(e) {
+                    let newPass = document.querySelector('#new')
+                    let confirmPass = document.querySelector('#confirm')
+                    console.log(newPass.value, confirmPass.value);
+                    if (newPass.value !== confirmPass.value) {
+                        e.preventDefault();
+                        confirmPass.style.borderColor = 'red'
+                        confirmPass.style.boxShadow = '2px 2px 10px red'
+                        newPass.style.borderColor = 'red'
+                        newPass.style.boxShadow = '2px 2px 10px red'
+                        confirmPass.value = ''
+                        newPass.value = ''
+                    }
+                }
+                let passwordPage = document.querySelector('.password')
+                let accountPage = document.querySelector('.container')
+                passwordPage.style.display = 'none';
+                document.querySelector('.pass-card').addEventListener('click', () => {
+                    passwordPage.style.display = 'block';
+                    accountPage.style.display = 'none';
+                })
+                function showContainer() {
+                    passwordPage.style.display = 'none';
+                    accountPage.style.display = 'flex';
+                }
+            </script>
+</body>
+
+</html>
