@@ -12,11 +12,14 @@ app.get("/", (req, res) => {
 app.get("/next", async (req, res) => {
   //   res.send(hello());
   try {
-    let result = await (await db).collection("usercredentials").find();
+    let result = await (await db)
+      .collection("usercredentials")
+      .find()
+      .toArray();
     console.log(result);
 
     if (result) {
-      res.json(True);
+      res.json(result);
     } else {
       res.send("False");
     }
