@@ -31,11 +31,17 @@ async function createUser(req, res) {
     req.body.username = req.body.email;
   }
   let password = req.body.password;
-  if (
-    !(await (await db).collection("usercredentials").find({
+  let temp = await (
+    await db
+  )
+    .collection("usercredentials")
+    .find({
       $or: [{ username: req.body.username }, { email: req.body.email }],
-    }))
-  ) {
+    })
+    .toArray();
+  console.log(temp);
+
+  if (temp.length === 0) {
     await bcrypt.hash(password, saltRounds, async (err, hash) => {
       if (err) {
         console.err("error hashing password", err);
