@@ -19,7 +19,12 @@ app.use(
   session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // Cookie expires after 1 day (in milliseconds)
+      secure: true, // Set to true if using HTTPS
+      httpOnly: true, // Prevents client-side JavaScript from accessing the cookie
+    },
   })
 );
 app.use(express.json());
