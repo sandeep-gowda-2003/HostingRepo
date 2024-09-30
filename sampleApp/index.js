@@ -11,7 +11,13 @@ app.get("/", (req, res) => {
 });
 app.get("/next", async (req, res) => {
   //   res.send(hello());
-  res.json(await (await db).collection("usercredentials").find());
+  try {
+    let result = await (await db).collection("usercredentials").find();
+
+    res.json(JSON.stringify(result));
+  } catch (error) {
+    res.send("error occured", error.message);
+  }
 });
 
 app.listen(process.env.PORT);
