@@ -122,7 +122,6 @@ body {
         display: flex;
         flex-direction: row;
     }
-    
     .messages {
         width: 70vw;
         height: 70vh;
@@ -296,8 +295,9 @@ body {
         list-style: none;
         background-color: green;
         color: white;
-        max-width: 20vw;
-        min-width: 3rem;
+        width: fit-content;
+        max-width: 60vw;
+        /* min-width: 3rem; */
         margin: 0.2rem 0.5rem;
         padding: 10px;
         border-radius: 15px;

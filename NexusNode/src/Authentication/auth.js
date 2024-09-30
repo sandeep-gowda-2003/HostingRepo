@@ -72,7 +72,9 @@ async function checkCredentials(req, res) {
   try {
     let result = await (await db)
       .collection("usercredentials")
-      .findOne({ username: req.body.username });
+      .findOne({
+        $or: [{ username: req.body.username }, { email: req.body.username }],
+      });
     if (!result) {
       message = "USER DOES NOT EXIST";
       res.redirect("/");
