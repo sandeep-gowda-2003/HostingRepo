@@ -4,10 +4,10 @@ import bodyParser from "body-parser";
 import { Server } from "socket.io";
 import http from "node:http";
 import { pushMessage } from "./src/controllers/privateMessage.js";
-// import env from "dotenv";
+import env from "dotenv";
 import router from "./src/router/route.js";
 
-// env.config();
+env.config();
 let app = express();
 let server = http.createServer(app);
 let io = new Server(server);
@@ -22,8 +22,6 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 24 * 60 * 60 * 1000, // Cookie expires after 1 day (in milliseconds)
-      secure: true, // Set to true if using HTTPS
-      httpOnly: true, // Prevents client-side JavaScript from accessing the cookie
     },
   })
 );

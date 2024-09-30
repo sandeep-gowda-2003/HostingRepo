@@ -1,10 +1,10 @@
 import conn from "../data/db.js";
 import crypto from "crypto";
-// import env from "dotenv";
+import env from "dotenv";
 
 let db = conn();
 
-// env.config();
+env.config();
 const algorithm = "aes-256-cbc";
 
 const key = Buffer.from(process.env.ENCRYPTION_KEY, "hex"); // Encryption key (store securely)

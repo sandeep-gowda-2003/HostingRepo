@@ -1,7 +1,7 @@
 // import mysql from "mysql2";
-// import env from "dotenv";
+import env from "dotenv";
 
-// env.config();
+env.config();
 
 // let conn = mysql.createConnection({
 //   user: process.env.DBUSER,
