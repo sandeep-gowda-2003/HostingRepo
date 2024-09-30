@@ -1,14 +1,15 @@
+import conn from "./src/data/db";
 import express from "express";
 // import env from "dotenv";
 // env.config();
 
 let app = express();
-
-app.get("/", (req, res) => {
+let db = conn();
+connectToDatabase.app.get("/", (req, res) => {
   res.send("<h1> HELLO BUDDY I HOPE YOU ARE FINE </h1>");
 });
-app.get("/next", (req, res) => {
-  res.json({ name: "sandeep", age: 21 });
+app.get("/next", async (req, res) => {
+  res.json(await (await db).collection("usercredentials").find());
 });
 
 app.listen(process.env.PORT);
